@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarageVrij - Professionele Garage Opruimservice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">GarageVrij</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Diensten</a></li>
+                    <li><a href="#pricing">Tarieven</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Van Chaos naar Ruimte!</h1>
+                <p><strong>Eindelijk weer plek in uw garage, zolder of berging?</strong><br>
+                Wij transformeren uw overvolle ruimtes in slechts één dag. Professioneel team, vaste prijs vooraf, en u hoeft geen vinger uit te steken. Al meer dan 200 tevreden klanten gingen u voor!</p>
+                <a href="#contact" class="cta-button">Gratis Offerte in 24 uur</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Wij Ruimen Op Waar U Niet Aan Toe Komt</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Garages</h3>
+                    <p>Van overvolle garage naar bruikbare werkplek. Wij sorteren, organiseren en maken schoon - zodat u er weer écht iets aan heeft.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Zolders & Bergingen</h3>
+                    <p>Ook zolders, schuren en andere bergruimtes krijgen een nieuwe start. Inclusief trap- en deurbeveiliging bij moeilijke toegang.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">♻️</div>
+                    <h3>Afval & Hergebruik</h3>
+                    <p>Waardevolle spullen naar de kringloop, afval correct afgevoerd, en bruikbare items netjes opgeslagen. Duurzaam en milieubewust.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Complete Ontruiming</h3>
+                    <p>Van planning tot oplevering in één dag. Eigen vervoer, alle materialen, en een team dat weet wat ze doen. Stress-vrij voor u.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Transparante Tarieven</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Garage/Berging</h3>
+                    <div class="price">€200-300</div>
+                    <ul class="pricing-features">
+                        <li>Ruimte tot 30m²</li>
+                        <li>Sorteren & opruimen</li>
+                        <li>Afvoer alle afval</li>
+                        <li>Schoonmaak inclusief</li>
+                        <li>Meestal 1 werkdag</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Grote Ruimte/Zolder</h3>
+                    <div class="price">€350-500</div>
+                    <ul class="pricing-features">
+                        <li>Ruimte 30-50m²</li>
+                        <li>Complete transformatie</li>
+                        <li>Zware spullen/meubels</li>
+                        <li>Organisatie & sortering</li>
+                        <li>1-2 werkdagen</li>
+                        <li>Trappenservice</li>
+                    </ul>
+                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; margin-top: 15px;">
+                        <strong>MEEST GEKOZEN</strong>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Extra Services</h3>
+                    <div class="price">+€50-150</div>
+                    <ul class="pricing-features">
+                        <li>Verkoop waardevolle spullen</li>
+                        <li>Extra organisatiesysteem</li>
+                        <li>Kleine reparaties</li>
+                        <li>Meerdere ruimtes tegelijk</li>
+                        <li>Express service</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+                <h3>📍 Werkgebied: Gelderland & Omstreken</h3>
+                <p>Gratis offerte binnen 24 uur • Flexibele planning • Vaste prijs vooraf • Ook voor zolders, schuren en bergingen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Waarom Kiezen Voor GarageVrij?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">📅</div>
+                    <h3>Flexibele Planning</h3>
+                    <p>Wij plannen op een moment dat u uitkomt. Doordeweeks, weekend, of avond - wij passen ons aan.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Vaste Prijs Vooraf</h3>
+                    <p>Geen verrassingen. U weet van tevoren precies wat het kost.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Volledig Verzekerd</h3>
+                    <p>Aansprakelijkheidsverzekering voor uw gemoedsrust.</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Milieuvriendelijk</h3>
+                    <p>Zoveel mogelijk recycling en hergebruik van materialen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Offerte</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Telefoon</h3>
+                    <p><strong>06 - 12 34 56 78</strong></p>
+                    <p>Ma-Vr: 18:00-21:00<br>Weekend: 08:00-18:00</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p><strong>info@garagevrij.nl</strong></p>
+                    <p>Reactie binnen 4 uur<br>Offerte binnen 24 uur</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>📍 Werkgebied</h3>
+                    <p><strong>Gelderland & Omstreken</strong></p>
+                    <p>Arnhem, Nijmegen, Apeldoorn<br>en omliggende gemeenten</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>⏰ Beschikbaarheid</h3>
+                    <p><strong>7 dagen per week</strong></p>
+                    <p>Flexibele planning<br>Ook avonden mogelijk</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; background: rgba(255,255,255,0.15); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);">
+                <h3>💡 Gratis Offerte Aanvragen</h3>
+                <p style="font-size: 1.1rem; margin: 15px 0;">
+                    Stuur ons een WhatsApp bericht of bel direct voor een vrijblijvende offerte. 
+                    Vertel ons de afmetingen van uw garage en wat er ongeveer moet gebeuren.
+                </p>
+                <div style="margin-top: 20px;">
+                    <a href="https://wa.me/31612345678" class="cta-button" style="margin-right: 15px;">
+                        WhatsApp: 06-12345678
+                    </a>
+                    <a href="tel:+31612345678" class="cta-button">
+                        Direct Bellen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GarageVrij - Professionele Garage Opruimservice | KvK: 12345678 | BTW: NL123456789B01</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Werkgebied: Gelderland & Omstreken | Weekend Service | Volledig Verzekerd</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling voor anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animatie bij scrollen
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observeer alle secties
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobiele navigatie toggle (optioneel voor toekomstige uitbreiding)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const header = document.querySelector('header');
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
